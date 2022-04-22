@@ -1,0 +1,61 @@
+$baseScreenSize: 1680;
+$mobileScreenSize: 375;
+
+$baseScreenSizeH: 950;
+$mobileScreenSizeH: 812;
+
+@function size($pixels) {
+  @return calc(((#{$pixels} / var(--screen-size)) * 100) * 1vw);
+}
+
+@function sizeH($pixels) {
+  @return calc(((#{$pixels} / var(--screen-size-h)) * 100) * 1vh);
+}
+
+@mixin resizeMod($size) {
+  --screen-size: #{$baseScreenSize} * #{$size};
+}
+
+@mixin mobile() {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobileH() {
+  @media (max-width: 1024px) and (max-height: 421px) {
+    @content;
+  }
+}
+
+@mixin hover() {
+  @media only screen and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin clickableArea($size) {
+  &:after {
+    content: "";
+    position: absolute;
+    top: size(-$size);
+    bottom: size(-$size);
+    left: size(-$size);
+    right: size(-$size);
+  }
+}
+
+@function get-real-vh($vh) {
+  @return calc(var(--vh, 1vh) * #{$vh});
+}
+
+@function remsize($pixels) {
+  @return calc((#{$pixels} / var(--global-font-size)) * 1rem);
+}
+
+@mixin bg($url, $size: contain, $position: center, $repeat: no-repeat) {
+  background-image: url(#{'/images/'} + $url);
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+}

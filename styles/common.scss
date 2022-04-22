@@ -1,0 +1,54 @@
+@import "./mixins";
+@import "./colors";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  color: $black;
+  padding: env(safe-area-inset);
+  font-variant-ligatures: discretionary-ligatures;
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  --screen-size: #{$baseScreenSize};
+  --screen-size-h: #{$baseScreenSizeH};
+  --global-font-size: 31;
+
+  @include mobile {
+    --screen-size: #{$mobileScreenSize};
+    --screen-size-h: #{$mobileScreenSizeH};
+  }
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.hidden-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hidden-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  background-color: transparent;
+}
+
+.hidden-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

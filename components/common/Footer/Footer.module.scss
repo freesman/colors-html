@@ -1,0 +1,27 @@
+@import "styles/mixins";
+@import "styles/colors";
+
+.root {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  width: 100%;
+  color: $white;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  opacity: 0.5;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+}
